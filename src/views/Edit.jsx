@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { DiaryDispatchContext } from '../App';
-import Header from '../components/Header';
+import PageHeader from '../components/PageHeader';
 import Button from '../components/Button';
 import Editor from '../components/Editor';
 import useDiary from '../hooks/useDiary';
@@ -29,12 +29,12 @@ const Edit = () => {
   };
 
   if (!currentDiaryItem) {
-    return <div>데이터를 불러오는 중...</div>;
+    return <div className="p-10 text-center text-xl font-black">데이터를 불러오는 중...</div>;
   }
 
   return (
-    <div>
-      <Header
+    <div className="animate-in fade-in duration-500">
+      <PageHeader
         title={'일기 수정하기'}
         leftChild={<Button onClick={() => nav(-1)} text={'< 뒤로 가기'} />}
         rightChild={<Button onClick={onClickDelete} text={'삭제하기'} type={'NEGATIVE'} />}

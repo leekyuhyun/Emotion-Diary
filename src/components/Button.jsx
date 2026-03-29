@@ -1,16 +1,21 @@
-// className 속성을 추가로 받아서 커스텀할 수 있게 합니다.
-const Button = ({ text, type, onClick, className = '' }) => {
-  const btnClass =
-    type === 'POSITIVE'
-      ? 'bg-blue-500 text-white shadow-[0_8px_20px_rgba(59,130,246,0.3)] hover:bg-blue-600 hover:shadow-[0_12px_25px_rgba(59,130,246,0.4)]'
-      : type === 'NEGATIVE'
-        ? 'bg-red-500 text-white shadow-[0_8px_20px_rgba(239,68,68,0.3)] hover:bg-red-600 hover:shadow-[0_12px_25px_rgba(239,68,68,0.4)]'
-        : 'bg-white text-slate-600 shadow-[0_4px_15px_rgba(0,0,0,0.05)] hover:bg-slate-50 hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)]';
+const Button = ({ text, type, onClick }) => {
+  const btnType = ['POSITIVE', 'NEGATIVE'].includes(type) ? type : 'DEFAULT';
+
+  const typeClass = {
+    DEFAULT:
+      'bg-white text-slate-500 border border-slate-200 hover:bg-slate-50 hover:text-slate-600',
+
+    POSITIVE:
+      'bg-white text-diary-blue border border-slate-200 hover:bg-diary-blue hover:text-white hover:border-diary-blue shadow-sm',
+
+    NEGATIVE:
+      'bg-white text-rose-500 border border-slate-200 hover:bg-rose-500 hover:text-white hover:border-rose-500 shadow-sm',
+  }[btnType];
 
   return (
     <button
       onClick={onClick}
-      className={`cursor-pointer border-none rounded-full px-8 py-4 text-xl font-extrabold whitespace-nowrap transition-all duration-300 hover:-translate-y-1.5 active:translate-y-0 ${btnClass} ${className}`}
+      className={`cursor-pointer px-5 py-2 rounded-xl text-base font-black transition-all active:scale-95 ${typeClass}`}
     >
       {text}
     </button>

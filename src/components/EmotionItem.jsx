@@ -1,37 +1,31 @@
 import getEmotionImage from '../utils/get-emotion-image';
 
 const EmotionItem = ({ emotionId, emotionName, isSelected, onClick }) => {
-  const commonClass =
-    'py-6 rounded-3xl cursor-pointer text-center transition-all duration-300 flex-1 border-2';
-
-  const unselectedClass = 'bg-slate-50 border-slate-50 hover:bg-slate-100 hover:scale-[1.03]';
-
-  const selectedClasses = {
-    1: 'bg-green-500 border-green-500 shadow-[0_8px_20px_rgba(34,197,94,0.3)] text-white scale-105 -translate-y-2',
-    2: 'bg-[#8de3a9] border-[#8de3a9] shadow-[0_10px_25px_rgba(141,227,169,0.4)] text-green-900 scale-110 -translate-y-4',
-    3: 'bg-yellow-400 border-yellow-400 shadow-[0_10px_25px_rgba(250,204,21,0.4)] text-white scale-110 -translate-y-4',
-    4: 'bg-orange-400 border-orange-400 shadow-[0_8px_20px_rgba(251,146,60,0.3)] text-white scale-105 -translate-y-2',
-    5: 'bg-red-500 border-red-500 shadow-[0_8px_20px_rgba(239,68,68,0.3)] text-white scale-105 -translate-y-2',
+  const emotionBaseStyles = {
+    1: 'bg-green-50 text-green-700',
+    2: 'bg-emerald-50 text-emerald-700',
+    3: 'bg-yellow-50 text-yellow-700',
+    4: 'bg-orange-50 text-orange-700',
+    5: 'bg-red-50 text-red-700',
   };
 
-  const appliedClass = `${commonClass} ${isSelected ? selectedClasses[emotionId] : unselectedClass}`;
+  const emotionSelectedStyles = {
+    1: 'bg-green-500 text-white shadow-md shadow-green-200',
+    2: 'bg-emerald-400 text-white shadow-md shadow-emerald-200',
+    3: 'bg-yellow-400 text-white shadow-md shadow-yellow-200',
+    4: 'bg-orange-400 text-white shadow-md shadow-orange-200',
+    5: 'bg-red-500 text-white shadow-md shadow-red-200',
+  };
 
   return (
-    <div onClick={onClick} className={appliedClass}>
-      <img
-        className={`w-1/2 mx-auto mb-4 transition-all duration-300 ${
-          isSelected ? 'scale-110 drop-shadow-md' : 'opacity-90'
-        }`}
-        src={getEmotionImage(emotionId)}
-        alt={emotionName}
-      />
-      <div
-        className={`text-xl font-bold transition-colors duration-300 ${
-          isSelected ? (emotionId === 2 ? 'text-green-700' : 'text-white') : 'text-slate-400'
-        }`}
-      >
-        {emotionName}
-      </div>
+    <div
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center cursor-pointer flex-1 py-3 rounded-xl border border-white transition-all ${
+        isSelected ? emotionSelectedStyles[emotionId] : emotionBaseStyles[emotionId]
+      }`}
+    >
+      <img className="w-9 mb-1" src={getEmotionImage(emotionId)} alt={emotionName} />
+      <div className="text-sm font-black tracking-tighter">{emotionName}</div>
     </div>
   );
 };

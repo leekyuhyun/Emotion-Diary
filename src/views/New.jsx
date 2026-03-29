@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DiaryDispatchContext } from '../App';
-import Header from '../components/Header';
+import PageHeader from '../components/PageHeader';
 import Button from '../components/Button';
 import Editor from '../components/Editor';
 import usePageTitle from '../hooks/usePageTitle';
@@ -17,8 +17,8 @@ const New = () => {
   };
 
   return (
-    <div>
-      <Header
+    <div className="animate-in fade-in duration-500">
+      <PageHeader
         title={'새 일기 쓰기'}
         leftChild={<Button onClick={() => nav(-1)} text={'< 뒤로가기'} />}
       />

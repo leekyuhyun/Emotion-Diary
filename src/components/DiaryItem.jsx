@@ -1,46 +1,47 @@
 import getEmotionImage from '../utils/get-emotion-image';
 import { useNavigate } from 'react-router-dom';
+import Button from './Button';
+import { getFormattedDate, getDayName } from '../utils/data-utils';
 
 const DiaryItem = ({ id, emotionId, createdDate, content }) => {
   const nav = useNavigate();
 
-  const bgColors = {
-    1: 'bg-green-400',
-    2: 'bg-green-300',
-    3: 'bg-yellow-400',
-    4: 'bg-orange-400',
-    5: 'bg-red-400',
-  };
-
   return (
-    <div className="relative pl-16 md:pl-20 group">
-      <div
-        onClick={() => nav(`/diary/${id}`)}
-        className={`absolute left-0 top-0 w-12.5 h-12.5 rounded-full flex justify-center items-center cursor-pointer shadow-lg border-4 border-white z-10 transition-transform group-hover:scale-110 group-hover:-rotate-6 ${bgColors[emotionId]}`}
-      >
-        <img className="w-[60%]" src={getEmotionImage(emotionId)} alt="감정" />
+    <div
+      onClick={() => nav(`/diary/${id}`)}
+      className="flex items-center gap-5 py-6 px-5 mb-4 border border-slate-100 bg-white rounded-2xl hover:border-diary-blue/30 hover:shadow-lg hover:shadow-blue-500/5 transition-all cursor-pointer group"
+    >
+      <div className="w-12 h-12 shrink-0 flex justify-center items-center group-hover:rotate-6 transition-transform rounded-full bg-[#E0E7FF] shadow-inner">
+        <img
+          className="w-full h-full object-contain"
+          src={getEmotionImage(emotionId)}
+          alt="emotion"
+        />
       </div>
 
-      <div
-        onClick={() => nav(`/diary/${id}`)}
-        className="bg-white p-6 rounded-3xl rounded-tl-none border border-slate-100 shadow-[0_2px_15px_rgba(0,0,0,0.02)] cursor-pointer transition-all duration-300 group-hover:shadow-[0_10px_30px_rgba(59,130,246,0.08)] group-hover:bg-blue-50/30"
-      >
-        <div className="flex justify-between items-start mb-3">
-          <span className="text-blue-500 font-bold text-xl tracking-wide">
-            {new Date(createdDate).toLocaleDateString()}
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 mb-1.5">
+          <span className="text-sm font-black text-slate-400 tracking-tight">
+            {getFormattedDate(createdDate)}
           </span>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              nav(`/edit/${id}`);
-            }}
-            className="text-slate-300 hover:text-blue-500 font-bold text-sm bg-slate-50 px-3 py-1 rounded-full transition-colors"
-          >
-            수정
-          </button>
+          <span className="text-[11px] font-bold px-2 py-0.5 bg-slate-50 text-slate-400 border border-slate-100 rounded-full">
+            {getDayName(createdDate)}
+          </span>
         </div>
 
-        <p className="text-xl text-slate-600 leading-relaxed line-clamp-3 m-0">{content}</p>
+        <p className="text-[17px] leading-snug line-clamp-1 text-slate-700 font-bold group-hover:text-diary-blue transition-colors">
+          {content}
+        </p>
+      </div>
+
+      <div className="shrink-0 ml-2">
+        <Button
+          text={'수정'}
+          onClick={(e) => {
+            e.stopPropagation();
+            nav(`/edit/${id}`);
+          }}
+        />
       </div>
     </div>
   );

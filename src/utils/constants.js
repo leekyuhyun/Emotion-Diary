@@ -5,3 +5,5 @@ export const emotionList = [
   { emotionId: 4, emotionName: '나쁨' },
   { emotionId: 5, emotionName: '끔찍함' },
 ];
+
+export const COMMON_EMOTION_BG = 'bg-[#E0E7FF]';
