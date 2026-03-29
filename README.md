@@ -74,3 +74,5 @@ npm run dev
 ---
 
 강의 출처 : [인프런-한 입 크기로 잘라 먹는 리액트](https://www.inflearn.com/course/%ED%95%9C%EC%9E%85-%EB%A6%AC%EC%95%A1%ED%8A%B8?attributionToken=mgHwmQoMCIKgpM4GENGiwpsCEAEaJDY5ZGIxODQ5LTAwMDAtMjhjOS05ODZlLTg4M2QyNGY0YmJmNCokMGNjM2VhNWUtM2NlMC00MWE1LTgzNWQtNjk3MmRmZmY3OGMyMiCQ97Iwt7eMLcLwnhXUsp0Vjr6dFajlqi2c1rctn9a3LToOZGVmYXVsdF9zZWFyY2hIAVgBYAFoAXoCdHA&cid=328340)
+
+배포 주소 : [감정 일기장](https://emotion-diary-rust-five.vercel.app)
