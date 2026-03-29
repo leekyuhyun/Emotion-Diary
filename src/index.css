@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Gaegu';
+  src: url('/Gaegu-Regular.ttf');
+}
+
+html,
+body {
+  margin: 0px;
+  width: 100%;
+  background-color: #eef2f6; /* 아주 연한 쿨톤 배경 */
+  display: flex;
+  justify-content: center;
+  color: #334155; /* 너무 까맣지 않은 세련된 텍스트 색상 */
+}
+
+#root {
+  background-color: #ffffff;
+  max-width: 600px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0px 30px; /* 양옆 여백을 조금 더 주어 숨통을 트이게 */
+  box-sizing: border-box;
+  /* 부드럽고 깊은 그림자로 스마트폰 앱 화면처럼 띄움 */
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.08);
+}
+
+body * {
+  font-family: 'Gaegu', sans-serif;
+  box-sizing: border-box;
+}
